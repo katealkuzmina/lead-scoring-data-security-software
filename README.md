@@ -79,14 +79,19 @@ Two tables, included in `data/`:
 
 ## Results
 
-- **PR-AUC:** Logistic Regression 0.083, XGBoost 0.055 — both well above the
-  ~0.024 base-rate floor (roughly 2-3x lift), on a genuinely hard, noisy
-  target. **Logistic Regression outperforms XGBoost on every metric here**,
-  the opposite of the usual expectation — most likely because there are
-  only ~356 `closed_won` leads in the whole dataset, too few positives for
-  200 boosted trees to learn a stable pattern from without overfitting. LR
-  is carried forward as the primary model (Step 5 onward); XGBoost is kept
-  as the comparison.
+- **PR-AUC:** Logistic Regression 0.066±0.010 (range 0.059–0.083), XGBoost
+  0.055±0.010 (range 0.048–0.072) — both averaged across 5 different
+  train/test splits, not a single split (a single-split reading, e.g. the
+  original `random_state=42`, can show LR as high as 0.083 — the best of 5,
+  not typical). Both are well above the ~0.024 base-rate floor, on a
+  genuinely hard, noisy target. **Logistic Regression outperforms XGBoost
+  on PR-AUC in 4 of 5 splits** — not "every metric," a claim an earlier
+  version of this README made from a single split; on `seed=2024` XGBoost
+  actually wins (0.072 vs. 0.063). Most likely cause either way: only
+  ~356 `closed_won` leads in the whole dataset, too few positives for 200
+  boosted trees to learn a stable pattern from without overfitting. LR is
+  carried forward as the primary model (Step 5 onward); XGBoost is kept as
+  the comparison.
 - **Thresholds:** the F1-optimal threshold is selected honestly — on a
   held-out 25% slice of the *training* set, never on `y_test` — then scored
   once on the untouched test set; a 5-split robustness check (different
@@ -117,11 +122,11 @@ Two tables, included in `data/`:
   coefficients despite more engagement being a good sign (multicollinearity
   with `lead_score_at_creation`, not a real inverse relationship).
 - **Business impact:** working just the **top 20%** of leads by LR score
-  captures **56.1%** of total Closed Won deal value, at only **33.3%** of
-  the working cost (SDR qualification + RM overhead) of touching every lead
-  (USD 189,777 vs. USD 569,941, on fictional but plausible cost
-  assumptions). The top 10% alone captures 37.6% of value for 18.2% of cost
-  — the single most efficient slice.
+  captures **49.3%±4.2%** of total Closed Won deal value on average across
+  5 splits (range 45.4–56.1% — the 56.1% figure, on ~33.3% of the working
+  cost, USD 189,777 vs. USD 569,941, is the single-split reading and the
+  best of 5, not typical). The honest headline is "roughly half the deal
+  value from a fifth of the effort," not "over half."
 
 ## How to run
 

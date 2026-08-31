@@ -3,9 +3,8 @@ dataset.
 
 All names/topics are period-styled after real vendor offerings; "Microsoft
 Entra ID" and any AI/Copilot topic are deliberately excluded — they postdate
-Kate's 2019-2022 tenure. See
-docs/superpowers/specs/2026-08-28-lead-scoring-design.md for every anchor
-point's real-world grounding.
+Kate's 2019-2022 tenure. See docs/ (kept local-only, not part of the
+published repo) for every anchor point's real-world grounding.
 """
 
 AUDITOR_MODULES = [

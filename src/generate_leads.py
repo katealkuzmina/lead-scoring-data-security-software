@@ -1,6 +1,6 @@
 """Synthetic data security software lead-scoring dataset generator.
 
-See docs/superpowers/specs/2026-08-28-lead-scoring-design.md for the full
+See docs/ (kept local-only, not part of the published repo) for the full
 design rationale. Every function here is pure given an `rng`
 (numpy.random.Generator), so the whole dataset is reproducible from a seed.
 """
