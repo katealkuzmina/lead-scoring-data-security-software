@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.pkl
+*.joblib
+
+# CRM screenshots used only as design reference — contain real lead PII, never commit
+docs/superpowers/specs/*.jpg
+docs/superpowers/specs/*.png
+
+# Internal AI-assisted planning docs and draft posts — not needed to run
+# the project, kept local-only
+docs/
+linkedin_post.md
