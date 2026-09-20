@@ -1,0 +1,22 @@
+[project]
+name = "lead-scoring-data-security-software"
+version = "0.1.0"
+description = "Lead-scoring model on a synthetic dataset grounded in 4 years of SDR experience at a data security software vendor"
+requires-python = ">=3.12"
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.2",
+    "pandas>=3.0.5",
+    "scikit-learn>=1.9.0",
+    "seaborn>=0.13.2",
+    "xgboost>=3.4.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "nbconvert>=7.17.1",
+    "nbformat>=5.11.1",
+    "pytest>=9.1.1",
+]
